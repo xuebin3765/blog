@@ -1,7 +1,7 @@
 package com.xblog.open.controller.blog;
 
-import com.xblog.common.controller.BaseController;
-import com.xblog.common.response.ResponseBean;
+import com.xblog.open.common.controller.BaseController;
+import com.xblog.open.common.response.ResponseBean;
 import com.xblog.open.dto.ArticleReqDTO;
 import com.xblog.open.entity.blog.Article;
 import com.xblog.open.service.ArticleService;
