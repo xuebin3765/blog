@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+
+    <title>程序员刊</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="本站是程序猿DD（翟永超）的技术分享博客。内容涵盖Java后端技术、Spring Boot、Spring Cloud、微服务架构、运维开发、系统监控等相关的研究与知识分享。">
+    <meta name="keywords" content="Spring Boot, Spring Cloud, 微服务, 翟永超, 程序猿DD">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="程序猿DD">
+    <meta property="og:url" content="http://blog.didispace.com/index.html">
+    <meta property="og:site_name" content="程序猿DD">
+    <meta property="og:description" content="本站是程序猿DD（翟永超）的技术分享博客。内容涵盖Java后端技术、Spring Boot、Spring Cloud、微服务架构、运维开发、系统监控等相关的研究与知识分享。">
+    <meta property="og:locale" content="zh-CN">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="程序猿DD">
+    <meta name="twitter:description" content="本站是程序猿DD（翟永超）的技术分享博客。内容涵盖Java后端技术、Spring Boot、Spring Cloud、微服务架构、运维开发、系统监控等相关的研究与知识分享。">
+
+    <meta name="keywords" content="Spring Boot, Spring Cloud, 微服务, 翟永超, 程序猿DD">
+
+
+
+    <link rel="icon" href="/images/favicon.ico">
+
+
+    <script src="/vendor/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="/vendor/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <script src="/vendor/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+    <!--template css-->
+    <link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/open-sans/styles.css">
+    <link rel="stylesheet" href="/css/source-code-pro/styles.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style type="text/css">
+        pre {
+            color: inherit;
+            background-color: inherit;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.css">
+
+</head>
+</html>
+<body>
+<div id="container">
+    <header id="header">
+        <div id="header-main" class="header-inner">
+            <div class="outer">
+                <a href="/" id="logo">
+                    <i class="logo"></i>
+                    <span class="site-title">程序猿DD</span>
+                </a>
+                <nav id="main-nav">
+
+                    <a class="main-nav-link" target="_blank" href="/ziyuan-and-fuli">福利资源</a>
+
+                    <a class="main-nav-link" target="_blank" href="https://t.xiaomiquan.com/zfEiY3v">知识星球</a>
+
+                    <a class="main-nav-link" target="_blank" href="/geek-time">极客时间</a>
+
+                    <a class="main-nav-link" target="_blank" href="/freebooks">开源书籍</a>
+
+                    <a class="main-nav-link" target="_blank" href="https://detail.youzan.com/show/goods/newest?alias=1yf4ze2hkm8mq">装备库</a>
+
+                    <a class="main-nav-link" target="_blank" href="/friendly-links">友链</a>
+
+                    <a class="main-nav-link" target="_blank" href="/archives">归档</a>
+
+                    <a class="main-nav-link" target="_blank" href="/aboutme">关于</a>
+
+                </nav>
+
+
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/weixin.jpg">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+
+                <div id="search-form-wrap">
+
+                    <form class="search-form" method="GET" action="https://www.baidu.com/s?">
+                        <input name="wd" type="text" class="search-form-input" placeholder="搜索">
+                        <button type="submit" class="search-form-submit"></button>
+                    </form>
+                    <script>
+                        (function ($) {
+                            $('.search-form').on('submit', function (e) {
+                                var keyword = $('.search-form-input[name="wd"]').val();
+                                window.location = 'https://www.baidu.com/s?wd=site:blog.didispace.com ' + keyword;
+                                return false;
+                            });
+                        })(jQuery);
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div id="main-nav-mobile" class="header-sub header-inner">
+            <table class="menu outer">
+                <tr>
+
+                    <td><a class="main-nav-link" href="/ziyuan-and-fuli">福利资源</a></td>
+
+                    <td><a class="main-nav-link" href="https://t.xiaomiquan.com/zfEiY3v">知识星球</a></td>
+
+                    <td><a class="main-nav-link" href="/geek-time">极客时间</a></td>
+
+                    <td><a class="main-nav-link" href="/freebooks">开源书籍</a></td>
+
+                    <td><a class="main-nav-link" href="https://detail.youzan.com/show/goods/newest?alias=1yf4ze2hkm8mq">装备库</a></td>
+
+                    <td><a class="main-nav-link" href="/friendly-links">友链</a></td>
+
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+
+                    <td><a class="main-nav-link" href="/aboutme">关于</a></td>
+
+                    <td>
+
+                        <form class="search-form" method="GET" action="https://www.baidu.com/s?">
+                            <input name="wd" type="text" class="search-form-input" placeholder="搜索">
+                            <button type="submit" class="search-form-submit"></button>
+                        </form>
+                        <script>
+                            (function ($) {
+                                $('.search-form').on('submit', function (e) {
+                                    var keyword = $('.search-form-input[name="wd"]').val();
+                                    window.location = 'https://www.baidu.com/s?wd=site:blog.didispace.com ' + keyword;
+                                    return false;
+                                });
+                            })(jQuery);
+                        </script>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+
+    <div class="outer row">
+        <!--新布局-->
+
+        <!-- 左侧主体内容 -->
+        <section class="col-lg-9"><style>
+            .row {
+                margin-top: 15px;
+            }
+
+            .index-card {
+                padding: 15px;
+                background: #fff;
+                -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            }
+
+            .index-card-head {
+                font-size: 1.3em;
+                font-weight: 700;
+                margin-bottom: 15px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #eceff2;
+                color: #009688;
+            }
+
+            .index-card-body {
+
+            }
+
+            .index-card-body-list {
+                display: block;
+                margin-bottom: 7px;
+                justify-content: space-between;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .index-card-body-list a {
+                color: grey;
+                font-size: 15px;
+                width: 80%;
+            }
+
+            .index-card-body-list a:hover {
+                color: dodgerblue;
+            }
+
+
+            /*.index-card-footer {*/
+            /*font-size: 0.85em;*/
+            /*line-height: 1.6em;*/
+            /*border-top: 1px solid #eceff2;*/
+            /*padding-top: 5px;*/
+            /*margin-top: 20px;*/
+            /*}*/
+
+        </style>
+
+            <!-- 第一行 -->
+            <div class="row">
+                <!-- 轮播插件 -->
+                <div class="col-md-6">
+                    <style>
+
+                        .banner {
+                            height: 410px;
+                            width: 100%;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .banner ul{
+                            padding: 0;
+                            margin: 0;
+                        }
+                        .banner ul li{
+                            top: 0;
+                            left: 0;
+                            list-style: none;
+                            position: absolute;
+                        }
+                        .banner ul li img{
+                            height: 410px;
+                            width: auto;
+                        }
+                        .ban-btn{
+                            width: 100%;
+                            position: absolute;
+                            top: 136px;
+                            z-index: 2;
+                        }
+                        .ban-btn a{
+                            display: inline-block;
+                            height: 60px;
+                            width: 35px;
+                            background: rgba(180,180,180,0.5);
+                            font-size: 25px;
+                            text-align: center;
+                            line-height: 60px;
+                            color: #fff;
+                            text-decoration: none;
+                        }
+                        .next-btn{
+                            float: right;
+                        }
+                        .prev-btn{
+                            float: left;
+                        }
+                        .ban-btn a:hover{
+                            background: rgba(100,100,100,0.5);
+                        }
+                        .indicator{
+                            width: 100%;
+                            position: absolute;
+                            text-align: center;
+                            bottom: 15px;
+                            z-index: 2;
+                        }
+                        .indicator a{
+                            display: inline-block;
+                            width: 20px;
+                            height: 5px;
+                            margin:0 3px;
+                            background: #fff;
+                        }
+                        .indicator-active{
+                            background: #FF8C00!important;
+                        }
+
+                    </style>
+
+                    <div class="banner" id="J_bg_ban">
+                        <ul>
+                            <!--spring全家桶课-->
+                            <li style="background-color: darkgray;width: 100%;height: 100%;text-align: center;line-height: 410px;">
+                                <a href="https://time.geekbang.org/course/intro/100023501?code=d1se%2F7ugeBEyuU%2FIYp1ynfSZa6ulbGhhDK%2Fkpn3-lFc%3D" target="_blank"><img src="/assets/geektime/spring.jpg" alt=""></a>
+                            </li>
+                            <!--杨波的课-->
+                            <li style="background-color: darkgray;width: 100%;height: 100%;text-align: center;line-height: 410px;">
+                                <a href="https://time.geekbang.org/course/intro/100031401?code=nMAP0LAKTpX8igGUhWO6ogH%2FJTt%2Fwu95aMHAH-8tqf4%3D" target="_blank"><img src="/assets/geektime/banner_yangbo_2.jpg" alt=""></a>
+                            </li>
+                            <!--<li style="background-color: darkgray;width: 100%;height: 100%;text-align: center;line-height: 410px;">-->
+                            <!--<p>扫描右侧二维码关注支持我，顺便推荐给你的朋友吧</p>-->
+                            <!--</li>-->
+                            <!--<li><a href="#"><img src="https://zsqosos.github.io/img/banner_02.jpg" alt=""/></a></li>-->
+                            <!--<li><a href="#"><img src="https://zsqosos.github.io/img/banner_03.jpg" alt=""/></a></li>-->
+                        </ul>
+                        <div class="indicator" id="J_bg_indicator"></div>
+                        <div class="ban-btn clearfloat" id="J_bg_btn">
+                            <a class="next-btn fr" href="javascript:">&gt;</a><a class="prev-btn fl" href="javascript:">&lt;</a>
+                        </div>
+
+                    </div>
+
+                    <script type="text/javascript">
+                        $.carousel = {
+                            now : 0,                    //当前显示的图片索引
+                            hasStarted : false,         //是否开始轮播
+                            interval : null,            //定时器
+                            liItems : null,             //要轮播的li元素集合
+                            len : 0,                    //liItems的长度
+                            aBox : null,                //包含指示器的dom对象
+                            bBox : null,                //包含前后按钮的dom对象
+
+                            /**
+                             * 初始化及控制函数
+                             * @param bannnerBox string 包含整个轮播图盒子的id或class
+                             * @param aBox  string 包含指示器的盒子的id或class
+                             * @param btnBox string 包含前后按钮的盒子的id或class
+                             */
+                            startPlay : function(bannnerBox,aBox,btnBox) {
+                                //初始化对象参数
+                                var that = this;
+                                this.liItems = $(bannnerBox).find('ul').find('li');
+                                this.len = this.liItems.length;
+                                this.aBox = $(bannnerBox).find(aBox);
+                                this.bBox = $(bannnerBox).find(btnBox);
+                                //让第一张图片显示，根据轮播图数量动态创建指示器，并让第一个指示器处于激活状态，隐藏前后按钮
+                                this.liItems.first('li').css({'opacity': 1, 'z-index': 1}).siblings('li').css({'opacity': 0, 'z-index': 0});
+                                var aDom = '';
+                                for (var i = 0; i < this.len; i++){
+                                    aDom += '<a></a>';
+                                }
+                                $(aDom).appendTo(this.aBox);
+                                this.aBox.find('a:first').addClass("indicator-active");
+                                this.bBox.hide();
+                                //鼠标移入banner图时，停止轮播并显示前后按钮，移出时开始轮播并隐藏前后按钮
+                                $(bannnerBox).hover(function (){
+                                    that.stop();
+                                    that.bBox.fadeIn(200);
+                                }, function (){
+                                    that.start();
+                                    that.bBox.fadeOut(200);
+                                });
+                                //鼠标移入指示器时，显示对应图片，移出时继续播放
+                                this.aBox.find('a').hover(function (){
+                                    that.stop();
+                                    var out = that.aBox.find('a').filter('.indicator-active').index();
+                                    that.now = $(this).index();
+                                    if(out!=that.now) {
+                                        that.play(out, that.now)
+                                    }
+                                }, function (){
+                                    that.start();
+                                });
+                                //点击左右按钮时显示上一张或下一张
+                                $(btnBox).find('a:first').click(function(){that.next()});
+                                $(btnBox).find('a:last').click(function(){that.prev()});
+                                //开始轮播
+                                this.start()
+                            },
+                            //前一张函数
+                            prev : function (){
+                                var out = this.now;
+                                this.now = (--this.now + this.len) % this.len;
+                                this.play(out, this.now);
+                            },
+                            //后一张函数
+                            next : function (){
+                                var out = this.now;
+                                this.now = ++this.now % this.len;
+                                this.play(out, this.now);
+                            },
+                            /**
+                             * 播放函数
+                             * @param out number 要消失的图片的索引值
+                             * @param now number 接下来要轮播的图的索引值
+                             */
+                            play : function (out, now){
+                                this.liItems.eq(out).stop().animate({opacity:0,'z-index':0},500).end().eq(now).stop().animate({opacity:1,'z-index':1},500);
+                                this.aBox.find('a').removeClass('indicator-active').eq(now).addClass('indicator-active');
+                            },
+                            //开始函数
+                            start : function(){
+                                if(!this.hasStarted) {
+                                    this.hasStarted = true;
+                                    var that = this;
+                                    this.interval = setInterval(function(){
+                                        that.next();
+                                    },2000);
+                                }
+                            },
+                            //停止函数
+                            stop : function (){
+                                clearInterval(this.interval);
+                                this.hasStarted = false;
+                            }
+                        };
+
+                        $(function(){
+                            $.carousel.startPlay('#J_bg_ban','#J_bg_indicator','#J_bg_btn');
+                        })
+                    </script>
+                </div>
+
+                <!-- 最新发布 -->
+                <div class="col-md-6">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>最新发布</h3>
+                        </div>
+                        <div class="index-card-body">
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/08/06</span>
+                                <a href="/laoxu-plugin-2/" target="_blank" itemprop="url">开发部署提速8倍！这款IDE插件了解一下？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/07/22</span>
+                                <a href="/rabbitmq-deplay-message-max/" target="_blank" itemprop="url">RabbitMQ延迟消息的极限是多少？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/07/17</span>
+                                <a href="/tiobe-and-pypl/" target="_blank" itemprop="url"> 7月编程语言排行榜来了，为什么不同媒体报道的结果不一样？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/06/27</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-5/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：@SentinelResource注解使用详解</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/06/09</span>
+                                <a href="/spring-boot-learning-21-1-3/" target="_blank" itemprop="url">Spring Boot 2.x基础教程：配置文件详解</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/06/08</span>
+                                <a href="/chrome-extentions-tabs/" target="_blank" itemprop="url">这几个 Chrome 的 Tab 增强插件你都用上了吗？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/30</span>
+                                <a href="/blog-10000000-pv/" target="_blank" itemprop="url">独立博客，从零到千万访问，这三年我都做了什么</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/21</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-4/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：Sentinel Dashboard中修改规则同步到Nacos</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/10</span>
+                                <a href="/open-nacos-server-1-0-0/" target="_blank" itemprop="url">公益：开放一台Nacos服务端给各位Spring Cloud爱好者</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/09</span>
+                                <a href="/tj-20190509/" target="_blank" itemprop="url">推荐一款让你纵横Github的读码神器：Octotree</a>
+                            </div>
+
+                        </div>
+                        <div class="index-card-footer" style="text-align: right;">
+                            <a href="/archives">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二行 -->
+            <div class="row">
+                <!-- Spring Boot-->
+                <div class="col-md-6">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>Spring Boot</h3>
+                        </div>
+                        <div class="index-card-body">
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/06/09</span>
+                                <a href="/spring-boot-learning-21-1-3/" target="_blank" itemprop="url">Spring Boot 2.x基础教程：配置文件详解</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/10</span>
+                                <a href="/spring-boot-learning-21-1-2/" target="_blank" itemprop="url">Spring Boot 2.x基础教程：工程结构推荐</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/03/24</span>
+                                <a href="/spring-boot-learning-21-1-1/" target="_blank" itemprop="url">Spring Boot 2.x基础教程：快速入门</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/03/12</span>
+                                <a href="/spring-boot-learning-update-2019-notice/" target="_blank" itemprop="url">全网Star最多（近20k）的Spring Boot开源教程 2019 年要继续更新了！</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/09/21</span>
+                                <a href="/spring-boot-xml-httpmessageconverter/" target="_blank" itemprop="url">Spring Boot中如何扩展XML请求和响应的支持</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/06/01</span>
+                                <a href="/opensource-Swagger-Butler-1-1-0/" target="_blank" itemprop="url">开源：Swagger Butler 1.1.0发布，利用ZuulRoute信息简化配置内容</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/25</span>
+                                <a href="/opensource-api-mgt-Swagger-Butler/" target="_blank" itemprop="url">开源：API文档汇总管理工具Swagger Butler</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/17</span>
+                                <a href="/studio-coding-spring-boot-app/" target="_blank" itemprop="url">使用Cloud Studio在线编写、调试和管理Spring Boot应用</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/04</span>
+                                <a href="/Springboot-2-0-HikariCP-default-reason/" target="_blank" itemprop="url">Springboot 2.0选择HikariCP作为默认数据库连接池的五大理由</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/04/15</span>
+                                <a href="/springbootasync-4/" target="_blank" itemprop="url">Spring Boot使用@Async实现异步调用：使用Future以及定义超时</a>
+                            </div>
+
+                        </div>
+                        <div class="index-card-footer" style="text-align: right;">
+                            <a href="/Spring-Boot%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">前往专题</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spring Cloud-->
+                <div class="col-md-6">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>Spring Cloud</h3>
+                        </div>
+                        <div class="index-card-body">
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/06/27</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-5/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：@SentinelResource注解使用详解</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/21</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-4/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：Sentinel Dashboard中修改规则同步到Nacos</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/10</span>
+                                <a href="/open-nacos-server-1-0-0/" target="_blank" itemprop="url">公益：开放一台Nacos服务端给各位Spring Cloud爱好者</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/08</span>
+                                <a href="/nacos-faqs/" target="_blank" itemprop="url">Nacos部署中的一些常见问题汇总</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/05</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-3/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：Sentinel Dashboard中修改规则同步到Apollo</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/28</span>
+                                <a href="/Spring-Cloud-Alibaba-version-update-021-to-022/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程版本升级：0.2.1-&gt;0.2.2</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/21</span>
+                                <a href="/spring-cloud-alibaba-release-0-9-0/" target="_blank" itemprop="url">Spring Cloud Alibaba 新版本发布：众多期待内容整合打包加入！</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/19</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-2/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：Sentinel使用Apollo存储规则</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/16</span>
+                                <a href="/spring-cloud-alibaba-sentinel-2-1/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：Sentinel使用Nacos存储规则</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/04/09</span>
+                                <a href="/spring-cloud-alibaba-sentinel-1/" target="_blank" itemprop="url">Spring Cloud Alibaba基础教程：使用Sentinel实现接口限流</a>
+                            </div>
+
+                        </div>
+                        <div class="index-card-footer" style="text-align: right;">
+                            <a href="/spring-cloud-learning">前往专题</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="width:100%;text-align: center;clear: both;margin-bottom: 20px;" class="hidden-xs">-->
+            <!--<ins class="adsbygoogle"-->
+            <!--style="display:block"-->
+            <!--data-ad-client="ca-pub-8254913025324557"-->
+            <!--data-ad-slot="1726967684"-->
+            <!--data-ad-format="auto"-->
+            <!--data-full-width-responsive="true"></ins>-->
+            <!--<script>-->
+            <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+            <!--</script>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!---->
+
+            <div class="row">
+                <!-- 微服务-->
+                <div class="col-md-6">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>微服务</h3>
+                        </div>
+                        <div class="index-card-body">
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/11/17</span>
+                                <a href="/consul-service-discovery-exp/" target="_blank" itemprop="url">使用Consul做服务发现的若干姿势</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/07/27</span>
+                                <a href="/spring-cloud-config-admin-1-0-0-release/" target="_blank" itemprop="url">为Spring Cloud Config插上管理的翅膀</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/07/16</span>
+                                <a href="/api-gateway-Zuul-1-zuul-2-how-to-choose/" target="_blank" itemprop="url">API网关 Zuul1.0 和 2.0 我们该如何选择？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/25</span>
+                                <a href="/opensource-api-mgt-Swagger-Butler/" target="_blank" itemprop="url">开源：API文档汇总管理工具Swagger Butler</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/06</span>
+                                <a href="/micro-service-team-org-mgr/" target="_blank" itemprop="url">微服务化小团队集群的组织和管理</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/04/26</span>
+                                <a href="/your-microservice-can-deploy-single/" target="_blank" itemprop="url">你的微服务敢独立交付么？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/03/25</span>
+                                <a href="/uber-micro-service-action/" target="_blank" itemprop="url">从Uber微服务看最佳实践如何炼成？</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/03/11</span>
+                                <a href="/microgateway-and-service-mesh/" target="_blank" itemprop="url">微网关与服务啮合</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/01/26</span>
+                                <a href="/API网关的作用、方案以及如何选择/" target="_blank" itemprop="url">API网关的作用、方案以及如何选择</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/01/21</span>
+                                <a href="/请不要在“微服务”的狂热中迷失自我！/" target="_blank" itemprop="url">请不要在“微服务”的狂热中迷失自我！</a>
+                            </div>
+
+                        </div>
+                        <div class="index-card-footer" style="text-align: right;">
+                            <a href="/tags/微服务/">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spring Cloud-->
+                <div class="col-md-6">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>技术杂记</h3>
+                        </div>
+                        <div class="index-card-body">
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">19/05/01</span>
+                                <a href="/IntelliJ-IDEA-with-Avengers-bg/" target="_blank" itemprop="url">复仇者联盟与IntelliJ IDEA也很配哦~</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/11/16</span>
+                                <a href="/logback-turbofilter/" target="_blank" itemprop="url">Logback中使用TurboFilter实现日志级别等内容的动态修改</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/11/15</span>
+                                <a href="/logback-custom-filter/" target="_blank" itemprop="url">Logback中如何自定义灵活的日志过滤规则</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/10/16</span>
+                                <a href="/swagger-apimodelproperty-allowablevalues/" target="_blank" itemprop="url">Swagger中配置了@ApiModelProperty的allowableValues属性但不显示的问题</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/07/09</span>
+                                <a href="/git-commit-specification/" target="_blank" itemprop="url">你可能会忽略的 Git 提交规范</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/06/25</span>
+                                <a href="/devops-for-small-team/" target="_blank" itemprop="url">一些小团队的自动化运维实践经验</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/06/21</span>
+                                <a href="/intellij-idea-some-features-sam-1/" target="_blank" itemprop="url">Intellij IDEA神器居然还有这些小技巧</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/05/12</span>
+                                <a href="/java-lombok-how-to-use/" target="_blank" itemprop="url">Java开发神器Lombok的使用与原理</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/04/30</span>
+                                <a href="/java-datasource-pool-compare/" target="_blank" itemprop="url">主流Java数据库连接池比较及前瞻</a>
+                            </div>
+
+                            <div class="index-card-body-list">
+                                <span style="font-size: 12px;color:#aaa;margin-right: 5px;">18/04/23</span>
+                                <a href="/learn-how-to-use-jwt-xjf/" target="_blank" itemprop="url">理解JWT的使用场景和优劣</a>
+                            </div>
+
+                        </div>
+                        <div class="index-card-footer" style="text-align: right;">
+                            <a href="/tags/技术杂记/">查看更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三行 -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>开源书籍</h3>
+                        </div>
+                        <div class="index-card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="index-card-body-list">
+                                        <a href="/books/a-programmer-prepares/" target="_blank" itemprop="url">程序员的自我修养</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/think-in-java/" target="_blank" itemprop="url">Java编程思想</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/java8-tutorial/" target="_blank" itemprop="url">Java 8简明教程</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/spring-framework-4-reference/" target="_blank" itemprop="url">Spring
+                                            4.x参考文档</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/spring-mvc-4-tutorial/" target="_blank" itemprop="url">Spring MVC
+                                            4.x中文文档</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/spring-boot-reference/" target="_blank" itemprop="url">Spring Boot
+                                            1.4中文文档</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="index-card-body-list">
+                                        <a href="/books/elasticsearch-definitive-guide-cn/" target="_blank" itemprop="url">ElasticSearch权威指南</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/GradleUserGuide/" target="_blank" itemprop="url">Gradle官方文档翻译</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/http2-explained-chinese/" target="_blank" itemprop="url">HTTP2讲解</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/mostly-adequate-guide-chinese/" target="_blank" itemprop="url">JS函数式编程指南</a>
+                                    </div>
+                                    <div class="index-card-body-list">
+                                        <a href="/books/react-tutorial/" target="_blank" itemprop="url">React入门教程</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="index-card">
+                        <div class="index-card-head">
+                            <h3>在线工具</h3>
+                        </div>
+                        <div class="index-card-body">
+                            <div class="index-card-body-list">
+                                <a href="http://blog.didispace.com/open-nacos-server-1-0-0/" target="_blank" itemprop="url">公益：Nacos注册中心与配置中心</a>
+                            </div>
+                            <div class="index-card-body-list">
+                                <a href="http://eureka.didispace.com/" target="_blank" itemprop="url">公益：Eureka注册中心</a>
+                            </div>
+                            <div class="index-card-body-list">
+                                <a href="/tools/online-markdown/" target="_blank" itemprop="url">工具：Markdown转换器（公众号编辑利器）</a>
+                            </div>
+                            <div class="index-card-body-list">
+                                <a href="/tools/online-json/" target="_blank" itemprop="url">工具：Json格式化与转换器</a>
+                            </div>
+                            <div class="index-card-body-list">
+                                <a href="#" target="_blank" itemprop="url">#</a>
+                            </div>
+                            <div class="index-card-body-list">
+                                <a href="#" target="_blank" itemprop="url">#</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row adv">
+                <div class="col-md-12">
+                    <div style="width:100%;text-align: center;clear: both;margin-bottom: 20px;" class="hidden-xs">
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8254913025324557" data-ad-slot="3369473724" data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!-- 右侧边栏内容 -->
+        <aside class="col-lg-3">
+
+            <style>
+                .bg-danger {
+                    background-color: #009688;
+                    padding: 15px;
+                    margin: 0px;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                }
+
+                .profile-block {
+                    padding: 10px 0px 30px 20px;
+                    margin-top: 10px;
+                    border-top: 1px solid #eceff2;
+                }
+
+                .tooltip {
+                    opacity: 1;
+                }
+
+                .widget-panel {
+                    background-color: white;
+                    padding: 20px;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                }
+
+                .media-body p {
+                    font-size: 13px;
+                    color: grey;
+                }
+
+            </style>
+
+            <div class="widget-wrap">
+                <div class="widget bg-danger" style="color:whitesmoke;">
+                    <div class="card-front animated col s12 m12 l8 offset-l2 fadeInUp">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img class="adv" style="width: 100%;" src="/css/images/weixin.jpg">
+                            </div>
+                            <div class="col-md-7" style="text-align: left;padding-left: 5px;">
+                                <h2 style="font-size: 18px;margin-bottom: 12px;">关注公众号</h2>
+                                <small style="font-size: 0.8em;">
+                                    →「技术干货」每日推送<br>
+                                    →「免费资料」随时领取<br>
+                                    →「签到活动」每周福利<br>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8em;">
+                        <a href="/assets/erweima.jpg" target="_blank" style="color:orange;font-size: 14px;">点击添加我的微信，加入技术讨论群</a><br>
+                        除公众号以外，我还会在以下平台发布内容：
+                    </div>
+                    <div class="profile-block social-links">
+                        <table style="width: 100%;text-align: center;">
+                            <tr>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="https://github.com/dyc87112" target="_blank" title="GitHub" class="tooltip">
+                                    <img style="width: 22px;height: 22px;" src="/assets/icon/github.svg"></a>
+                                </td>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="http://gitee.com/didispace" target="_blank" title="Gitee" class="tooltip">
+                                    <img style="width: 18px;" src="/assets/icon/gitee.svg"></a>
+                                </td>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="https://www.zhihu.com/people/di-yong-chao-86/" target="_blank" title="知乎" class="tooltip">
+                                    <img style="width: 22px;" src="/assets/icon/zhihu.svg"></a>
+                                </td>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="https://blog.csdn.net/dyc87112" target="_blank" title="CSDN" class="tooltip">
+                                    <img style="width: 18px;" src="/assets/icon/CSDN.svg"></a>
+                                </td>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="https://www.jianshu.com/u/6a622d516e32" target="_blank" title="简书" class="tooltip">
+                                    <img style="width: 22px;" src="/assets/icon/JianShu.svg"></a>
+                                </td>
+                                <td><a style="color: whitesmoke;font-size: 25px;" href="http://weibo.com/2014605502" target="_blank" title="微博" class="tooltip">
+                                    <img style="width: 22px;" src="/assets/icon/weibo.svg"></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 阿里云与腾讯云 -->
+            <div class="widget-wrap widget-panel">
+                <p style="text-align: left;padding-bottom: 10px;line-height: 30px; font-size: 14px;">
+                    <a href="http://blog.didispace.com/geek-time" target="_blank">全网最便宜的极客时间购买通道</a><br>
+                    <a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=wxfqkr0o&utm_source=wxfqkr0o" target="_blank">阿里云ECS云服务器2折起</a><br>
+                    <a href="https://cloud.tencent.com/redirect.php?redirect=1027&cps_key=f6a8af1297bfac40b9d10ffa1270029a&from=console" target="_blank">腾讯云低成本建站方案</a><br>
+                    <a href="https://portal.qiniu.com/signup?code=3lkfvdm0b13de" target="_blank">七牛云每月10G免费空间与流量</a>
+                </p>
+            </div>
+
+            <!--Coding固定：20190320-20200321-->
+
+            <div class="widget-wrap" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
+                <a href="https://coding.net/?utm_source=didispace&utm_medium=banner&utm_campaign=march2019" target="_blank">
+                    <img src="/assets/coding/340x150.png" style="width: 100%;">
+                </a>
+            </div>
+            <div class="widget-wrap" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
+                <a href="http://gk.link/a/103EK" target="_blank">
+                    <img src="/assets/geektime/side-geektime.jpeg" style="width: 100%;">
+                </a>
+            </div>
+
+
+            <div class="widget-wrap widget-panel">
+                <ul class="media-list">
+                    <li class="media">
+                        <a href="/Spring-Boot基础教程/" target="_blank">
+                            <div class="media-left">
+                                <img class="media-object" src="/assets/icon/spring-boot.svg" style="width: 55px;">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="font-weight: bold;margin-bottom: 10px;">Spring Boot基础教程</h4>
+                                <p>全网Star最多的Spring Boot免费教程，，目前正在更新2.x版本内容哦！</p>
+                            </div>
+                        </a>
+                    </li>
+                    <hr>
+                    <li class="media">
+                        <a href="/spring-cloud-learning/" target="_blank">
+                            <div class="media-left">
+                                <img class="media-object" src="/assets/icon/spring-cloud.svg" style="width: 46px;margin-right: 5px;margin-left: 4px;">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="font-weight: bold;margin-bottom: 10px;">Spring Cloud基础教程</h4>
+                                <p>全网最早最全的Spring Cloud免费教程，目前正在更新Alibaba模块与G版本哦！</p>
+                            </div>
+                        </a>
+                    </li>
+                    <hr>
+                    <li class="media">
+                        <a href="/micro-serivces-arch/" target="_blank">
+                            <div class="media-left">
+                                <img class="media-object" src="/assets/icon/microservice.svg" style="width: 55px;">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="font-weight: bold;margin-bottom: 10px;">微服务专题整理</h4>
+                                <p>最热门的分布式架构设计，微服务到底好不好？您的团队到底适合不适合？</p>
+                            </div>
+                        </a>
+                    </li>
+                    <hr>
+                    <li class="media">
+                        <a href="/regular-expression-all/" target="_blank">
+                            <div class="media-left">
+                                <img class="media-object" src="/assets/icon/正则表达式.svg" style="width: 38px;margin-right: 9px;margin-left: 8px;">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="font-weight: bold;margin-bottom: 10px;">正则表达式完整教程</h4>
+                                <p>正则表达式太复杂，学不会？看看这个专题能帮到你不！</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <!-- 分类 -->
+            <div class="widget-wrap widget-panel">
+                <h3 class="widget-title">分类</h3>
+                <div class="widget">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node-js/">Node.js</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Boot/">Spring Boot</a><span class="category-list-count">66</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring-Cloud/">Spring Cloud</a><span class="category-list-count">113</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源工具/">开源工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微服务/">微服务</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术杂技/">技术杂技</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术杂记/">技术杂记</a><span class="category-list-count">57</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摘抄笔记/">摘抄笔记</a><span class="category-list-count">70</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/敏捷管理/">敏捷管理</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔感悟/">随笔感悟</a><span class="category-list-count">11</span></li></ul>
+                </div>
+            </div>
+
+            <!-- Google推荐 -->
+
+
+
+            <!--<div class="widget-wrap">-->
+            <!--<h3 class="widget-title">推荐课程</h3>-->
+            <!--<div class="widget">-->
+            <!--<ul>-->
+            <!--<li><a target="_blank" href="/content/images/posts/jkzl-6.png" style="color:#009688">Java核心技术36讲</a></li>-->
+            <!--<li><a target="_blank" href="/content/images/posts/jkzl-3.png" style="color:#009688">趣谈网络协议</a></li>-->
+            <!--<li><a target="_blank" href="/content/images/posts/jkzl-1.png" style="color:#009688">从零开始学架构</a></li>-->
+            <!--<li><a target="_blank" href="https://mp.weixin.qq.com/s/H5kknK9k8z0_apkcULsxVg" style="color:#009688">微服务架构实战160讲</a></li>-->
+            <!--<li><a target="_blank" href="/content/images/posts/jkzl-4.png" style="color:#009688">左耳听风：洞悉技术的本质</a></li>-->
+            <!--&lt;!&ndash;<li><a target="_blank" href="/spring-boot-xiaomage/" style="color:#009688">Spring Boot 系列讲座</a></li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li><a target="_blank" href="/spring-boot-xiaomage-2/" style="color:#009688">Spring Cloud 系列讲座</a></li>&ndash;&gt;-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+
+
+
+            <div id="toTop" class="fa fa-angle-up"></div>
+        </aside>
+
+    </div>
+    <style>
+        .foot-count {
+            color: #009688;
+            font-weight: bold;
+            padding: 0px 5px;
+            font-size: 1.3em;
+        }
+
+        .foot-row {
+            text-align: center;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .foot-col {
+            /*padding: 20px;*/
+            text-align: left;
+            float: left;
+            width: 25%;
+        }
+
+        .foot-li {
+            padding: 5px 0px;
+        }
+
+        .widget-title {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        #footer a {
+            color: #888;
+        }
+
+        #footer {
+            background-color: #f8f8f8;
+            clear: both;
+        }
+
+        #footer li {
+            padding: 5px 0px;
+            font-size: 14px;
+        }
+
+        .label {
+            display: inline;
+            margin: 5px;
+            padding: .2em .6em .3em 0em;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+            /*background-color: g;*/
+        }
+
+        @media screen and (max-width: 1024px) {
+            #footer {
+                display: none;
+            }
+        }
+    </style>
+
+    <footer id="footer">
+        <div class="outer">
+            <div id="footer-info" class="inner">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <!--联系合作-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">联系方式</h3>
+                            <div class="widget">
+                                <ul>
+                                <span class="label">
+                                    <a href="#" target="_blank">公众号：程序猿DD</a>
+                                </span>
+                                </ul>
+                                <ul>
+                                <span class="label">
+                                    <a href="#" target="_blank">微信：zyc_enjoy</a>
+                                </span>
+                                </ul>
+                                <ul>
+                                <span class="label">
+                                    <a href="#" target="_blank">邮箱：dyc87112@qq.com</a>
+                                </span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <!--关注我们-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">其他平台</h3>
+                            <div class="widget">
+                                <ul>
+                                <span class="label">
+                                    <a href="https://github.com/dyc87112" target="_blank">Github</a>
+                                </span>
+                                    <span class="label">
+                                    <a href="http://gitee.com/didispace" target="_blank">Gitee</a>
+                                </span>
+                                    <span class="label">
+                                    <a href="/atom.xml" target="_blank">RSS订阅</a>
+                                </span>
+                                </ul>
+                                <ul>
+                                <span class="label">
+                                    <a href="http://www.jianshu.com/u/6a622d516e32" target="_blank">简书</a>
+                                </span>
+                                    <span class="label">
+                                    <a href="https://www.zhihu.com/people/di-yong-chao-86" target="_blank">知乎</a>
+                                </span>
+                                    <span class="label">
+                                    <a href="https://my.oschina.net/didispace/blog" target="_blank">开源中国</a>
+                                </span>
+                                </ul>
+                                <ul>
+                                <span class="label">
+                                    <a href="http://weibo.com/2014605502" target="_blank">新浪微博</a>
+                                </span>
+                                    <span class="label">
+                                    <a href="https://segmentfault.com/u/coderdd" target="_blank">SegmentFault</a>
+                                </span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-md-3 col-sm-6">-->
+                    <!--&lt;!&ndash;联系合作&ndash;&gt;-->
+                    <!--<div class="widget-wrap widget-list">-->
+                    <!--<h3 class="widget-title">我的公众号</h3>-->
+                    <!--<div class="widget">-->
+                    <!--<img style="width: 200px;" src="/css/images/weixin.jpg" />-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="row">
+                    <div style="clear: left;"></div>
+                    &copy; 2016 - 2019 程序猿DD - 翟永超 版权所有<br>
+                    <!--<div>-->
+                    <!--<span id="busuanzi_container_site_pv">访问量<span class="foot-count"  id="busuanzi_value_site_pv"></span>次</span>-->
+                    <!--<span id="busuanzi_container_site_uv">访客数<span class="foot-count"  id="busuanzi_value_site_uv"></span>人次</span>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                    <!--<span>本站CDN／存储服务由<a href="https://www.upyun.com/"><img src="/youpai/150-50.png" height="18px"/></a>提供</span>-->
+                    <!--</div>-->
+                    <a href="www.miitbeian.gov.cn">沪ICP备14037150号-3</a>
+                    <!--Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.-->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script>
+        ((window.gitter = {}).chat = {}).options = {
+            room: 'didispace/Lobby'
+        };
+    </script>
+    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+
+
+    <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+    <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+
+
+
+
+
+    <!--<script src="/js/stickUp.js"></script>-->
+    <!--<script type="text/javascript">-->
+    <!--//initiating jQuery-->
+    <!--jQuery(function($) {-->
+    <!--$(document).ready( function() {-->
+    <!--$('#left-adv').stickUp();-->
+    <!--});-->
+    <!--});-->
+    <!--</script>-->
+
+    <script src="/js/main.js"></script>
+
+</div>
+</body>
+</html>
