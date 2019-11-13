@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/api/admin")
 public class IndexController {
 
-    @RequestMapping(value = "/v1/index" , method = RequestMethod.GET)
+    @RequestMapping(value = "/index" , method = RequestMethod.GET)
     public String index(){
         return "admin/index";
     }
