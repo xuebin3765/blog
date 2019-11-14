@@ -1,4 +1,4 @@
-package com.xblog.open.controller.api.admin;
+package com.xblog.open.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Date 2018/9/10 22:18
  */
 @Controller
-@RequestMapping("/api/admin")
+@RequestMapping("/admin/index")
 public class IndexController {
 
-    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+    @RequestMapping(value = "/" , method = RequestMethod.GET)
     public String index(){
         return "admin/index";
     }
