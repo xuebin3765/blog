@@ -22,11 +22,20 @@ public class ApplicationOpen {
     public static void main(String[] args) throws Exception{
         SpringApplication app = new SpringApplication(ApplicationOpen.class);
         Environment env = app.run(args).getEnvironment();
+        String port = env.getProperty("server.port");
+        String netIp = InetAddress.getLocalHost().getHostAddress();
+        String localIp = "127.0.0.1";
         logger.info("Access URLs:\n----------------------------------------------------------\n\t" +
-                        "Local: \t\t http://127.0.0.1:{} \n\t" +
+                        "Blog: \t\t http://{}:{}/portal/index/ \n\t" +
+                        "Blog Admin:\t http://{}:{}/admin/index/ \n\t" +
+                        "Swagger: \t http://{}:{}/swagger-ui.html \n\t" +
+                        "Local: \t\t http://{}:{} \n\t" +
                         "External: \t http://{}:{} \n----------------------------------------------------------",
-                env.getProperty("server.port"),
-                InetAddress.getLocalHost().getHostAddress(),
-                env.getProperty("server.port"));
+                localIp,port,
+                localIp,port,
+                localIp,port,
+                localIp,port,
+                netIp,port);
+        logger.info("server starting ...");
     }
 }

@@ -22,8 +22,7 @@ public class CORSConfigurer extends WebMvcConfigurationSupport {
 
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HandlerInterceptorAdapter() {
-            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-                    throws Exception {
+            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
                 response.setHeader("Access-Control-Allow-Origin", "*");
                 response.setHeader("Access-Control-Allow-Methods", " GET, POST, PUT, PATCH, DELETE, OPTIONS");
                 response.setHeader("Access-Control-Max-Age", "3600");
@@ -36,8 +35,7 @@ public class CORSConfigurer extends WebMvcConfigurationSupport {
 
     /**
      * 这里有个坑，SpringBoot2 必须重写该方法，否则静态资源无法访问
-     *
-     * @param registry
+     * @param registry 静态资源注册
      */
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -53,7 +51,7 @@ public class CORSConfigurer extends WebMvcConfigurationSupport {
     /**
      * 消息内容转换配置
      * 配置fastJson返回json转换
-     * @param converters
+     * @param converters 教习转换器
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
