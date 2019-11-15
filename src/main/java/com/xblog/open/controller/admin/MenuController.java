@@ -10,6 +10,7 @@ public class MenuController extends BaseController {
 
     @GetMapping("/add")
     public String add(@RequestBody MenuAddDTO menuAddDTO){
+
         return "";
     }
 

@@ -15,11 +15,15 @@ public class Menu {
     @Id
     @Column()
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int id; // id
     @Column
-    private String title;
+    private String title; // 菜单标题
     @Column
-    private String desc;
+    private String desc; // 菜单描述
     @Column
-    private int parentId;
+    private int parentId; // 父id
+    @Column
+    private long createTime; // 创建时间
+    @Column
+    private long role; // 菜单角色
 }
