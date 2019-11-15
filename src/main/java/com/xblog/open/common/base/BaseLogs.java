@@ -1,5 +1,6 @@
 package com.xblog.open.common.base;
 
+import com.xblog.open.common.response.RespCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * author: xuebin3765@163.com
  * date: 2019/09/27
  */
-public class BaseLogs {
+public class BaseLogs extends RespCode {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public void debug(String format, Object... message){

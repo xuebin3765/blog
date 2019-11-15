@@ -1,6 +1,7 @@
 package com.xblog.open.model;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Maps;
 import com.xblog.open.common.annotation.RespMeg;
 import com.xblog.open.common.response.RespCode;
 import com.xblog.open.common.utils.JsonUtil;
@@ -8,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Map;
 
 /**
  * desc:
@@ -19,9 +22,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class RespEntity {
-    private String respCode;
-    private String respMsg;
-    private String data;
+    private String respCode = RespCode.success;
+    private String respMsg = RespEntity.getFileMsg(RespCode.success);
+    private Object data;
+
+    private final static String CODE = "code";
+    private final static String DATA = "data";
+    private final static String MESSAGE = "message";
 
     public static String success(){
         return new RespEntity.RespEntityBuilder()
@@ -101,5 +108,17 @@ public class RespEntity {
     public String toString() {
         // 打印结果不转义
         return JsonUtil.toStringNoRelation(this);
+    }
+
+    /**
+     * 返回map结果集，用来给页面返回数据
+     * @return map
+     */
+    public Map<String, Object> toMap(){
+        Map<String, Object> map = Maps.newHashMap();
+        map.put(CODE, this.respCode);
+        map.put(DATA, this.data);
+        map.put(MESSAGE, this.respMsg);
+        return map;
     }
 }

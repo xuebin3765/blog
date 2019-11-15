@@ -1,5 +1,8 @@
 package com.xblog.open.entity.sys;
 
+import com.commons.validator.annotation.Max;
+import com.commons.validator.annotation.Min;
+import com.commons.validator.annotation.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,14 +19,26 @@ public class Menu {
     @Column()
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id; // id
+
     @Column
     private String title; // 菜单标题
+
     @Column
     private String desc; // 菜单描述
+
     @Column
-    private int parentId; // 父id
+    @Min(value = 0, message = "parentId不能小于0")
+    private Integer parentId; // 父id
+
     @Column
     private long createTime; // 创建时间
+
     @Column
-    private long role; // 菜单角色
+    @Min(1)
+    @Max(3)
+    private Integer role; // 菜单角色
+
+    @Column
+    @NotNull
+    private String url; // 菜单路径
 }

@@ -120,6 +120,12 @@
         </dependency>
 
         <dependency>
+            <artifactId>commons-validator</artifactId>
+            <groupId>xb.commons</groupId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>

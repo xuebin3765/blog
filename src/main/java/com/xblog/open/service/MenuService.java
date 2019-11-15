@@ -1,9 +1,6 @@
 package com.xblog.open.service;
 
-import com.xblog.open.dto.menu.MenuAddDTO;
 import com.xblog.open.entity.sys.Menu;
-
-import java.util.List;
 
 /**
  * desc:
@@ -14,10 +11,14 @@ public interface MenuService {
 
     /**
      * 增加菜单
-     * @param menuAddDTO 菜单对象
+     * @param menu 菜单对象
      * @return 增加后的菜单
      */
-    public Menu add(MenuAddDTO menuAddDTO);
+    public Menu add(Menu menu);
+
+    Menu findByTitleOrUrl(String title, String url);
+
+    Menu findById(int id);
 //
 //    /**
 //     * 获取当前菜单的所有子菜单
