@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/menu")
@@ -21,6 +22,11 @@ public class MenuController extends BaseController {
     @Resource
     private MenuService menuService;
 
+    /**
+     * 新增菜单数据
+     * @param menu 菜单对象
+     * @return view
+     */
     @PostMapping("/add")
     public ModelAndView add(@RequestBody Menu menu){
 
@@ -32,10 +38,10 @@ public class MenuController extends BaseController {
         ValidResult validResult = ValidatorFactory.validBean(menu);
         if (!validResult.isHasErrors()){
 
-            Menu oldMenu = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrl());
+            Menu oldMenu = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrlPath());
 
             if (null != oldMenu){
-                debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrl());
+                debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrlPath());
                 return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
             }
 
@@ -67,11 +73,11 @@ public class MenuController extends BaseController {
         if (menu != null){
             Menu oldMenu = menuService.findById(menu.getId());
             if (oldMenu != null){
-                if (StringUtils.isNotBlank(menu.getTitle()) || StringUtils.isNotBlank(menu.getUrl())){
+                if (StringUtils.isNotBlank(menu.getTitle()) || StringUtils.isNotBlank(menu.getUrlPath())){
                     // 要修改标题和url
-                    Menu oldMenuByTitleOrUrl = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrl());
+                    Menu oldMenuByTitleOrUrl = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrlPath());
                     if (null != oldMenuByTitleOrUrl){
-                        debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrl());
+                        debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrlPath());
                         return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
                     }
                     // 设置标题
@@ -79,8 +85,8 @@ public class MenuController extends BaseController {
                         oldMenu.setTitle(menu.getTitle());
                     }
                     // 设置url
-                    if (StringUtils.isNotBlank(menu.getUrl())){
-                        oldMenu.setUrl(menu.getUrl());
+                    if (StringUtils.isNotBlank(menu.getUrlPath())){
+                        oldMenu.setUrlPath(menu.getUrlPath());
                     }
                 }
 
@@ -93,8 +99,8 @@ public class MenuController extends BaseController {
                     oldMenu.setRole(menu.getRole());
                 }
                 // 设置描述信息
-                if (StringUtils.isNotBlank(menu.getDesc())){
-                    oldMenu.setDesc(menu.getDesc());
+                if (StringUtils.isNotBlank(menu.getDescription())){
+                    oldMenu.setDescription(menu.getDescription());
                 }
                 menu = menuService.add(menu);
                 debug(" return success, view: {}", successView);
@@ -105,5 +111,71 @@ public class MenuController extends BaseController {
         debug(" return error, view: {}", errorView);
         return errorView(successView, respCode);
     }
+
+    /**
+     * 查询菜单
+     * @param parentId 父节点
+     * @return menuList
+     */
+    @GetMapping("/findAllMenu")
+    public ModelAndView findAllMenu(
+            @RequestParam(required = false, defaultValue = "-1") Integer parentId
+    ){
+
+        debug("step into update(), menu: {}", JsonUtil.toStringNoRelation(parentId));
+
+        String successView = "/admin/index";
+        String respCode = RespCode.error;
+
+        if (parentId < -1){
+            return errorView(successView, MenuRespCode.MENU_PARENT_ID_ERROR);
+        }
+
+        List<Menu> menuList = menuService.findAllMenu(parentId);
+
+        return successView(successView, menuList);
+
+//        if (menu != null){
+//            Menu oldMenu = menuService.findById(menu.getId());
+//            if (oldMenu != null){
+//                if (StringUtils.isNotBlank(menu.getTitle()) || StringUtils.isNotBlank(menu.getUrl())){
+//                    // 要修改标题和url
+//                    Menu oldMenuByTitleOrUrl = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrl());
+//                    if (null != oldMenuByTitleOrUrl){
+//                        debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrl());
+//                        return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
+//                    }
+//                    // 设置标题
+//                    if (StringUtils.isNotBlank(menu.getTitle())){
+//                        oldMenu.setTitle(menu.getTitle());
+//                    }
+//                    // 设置url
+//                    if (StringUtils.isNotBlank(menu.getUrl())){
+//                        oldMenu.setUrl(menu.getUrl());
+//                    }
+//                }
+//
+//                // 设置父目录
+//                if (null != menu.getParentId()){
+//                    oldMenu.setParentId(menu.getParentId());
+//                }
+//                // 设置权限
+//                if (null != menu.getRole()){
+//                    oldMenu.setRole(menu.getRole());
+//                }
+//                // 设置描述信息
+//                if (StringUtils.isNotBlank(menu.getDesc())){
+//                    oldMenu.setDesc(menu.getDesc());
+//                }
+//                menu = menuService.add(menu);
+//                debug(" return success, view: {}", successView);
+//                return successView(successView, menu);
+//            }
+//            respCode = MenuRespCode.MENU_NOT_EXIST;
+//        }
+//        debug(" return error, view: {}", errorView);
+//        return errorView(successView, respCode);
+    }
+
 
 }

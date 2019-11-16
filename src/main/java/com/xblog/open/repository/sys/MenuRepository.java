@@ -2,6 +2,7 @@ package com.xblog.open.repository.sys;
 
 
 import com.xblog.open.entity.sys.Menu;
+import io.swagger.models.auth.In;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,7 @@ import java.util.List;
  */
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
-    List<Menu> findAllByTitleOrUrlOrderByCreateTimeAsc(String title, String url);
+    List<Menu> findAllByTitleOrUrlPathOrderByCreateTimeAsc(String title, String url);
+
+    List<Menu> findAllByParentId(Integer parentId);
 }

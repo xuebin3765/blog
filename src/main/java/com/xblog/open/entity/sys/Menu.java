@@ -6,6 +6,7 @@ import com.commons.validator.annotation.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * 菜单
@@ -16,15 +17,15 @@ import javax.persistence.*;
 public class Menu {
 
     @Id
-    @Column()
+    @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id; // id
 
-    @Column
+    @Column(length = 128)
     private String title; // 菜单标题
 
     @Column
-    private String desc; // 菜单描述
+    private String description; // 菜单描述
 
     @Column
     @Min(value = 0, message = "parentId不能小于0")
@@ -38,7 +39,11 @@ public class Menu {
     @Max(3)
     private Integer role; // 菜单角色
 
-    @Column
+    @Column(length = 64)
     @NotNull
-    private String url; // 菜单路径
+    private String urlPath; // 菜单路径
+
+    // 数据库忽略该字段
+    @Transient
+    private List<Menu> children;
 }

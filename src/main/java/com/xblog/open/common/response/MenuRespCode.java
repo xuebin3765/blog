@@ -14,4 +14,6 @@ public class MenuRespCode extends RespCode {
     public static final String MENU_TITLE_OR_URL_REPEAT = "101003";
     @RespMeg("菜单不存在")
     public static final String MENU_NOT_EXIST = "101004";
+    @RespMeg("parentId不能小于0")
+    public static final String MENU_PARENT_ID_ERROR = "101005";
 }

@@ -2,6 +2,8 @@ package com.xblog.open.service;
 
 import com.xblog.open.entity.sys.Menu;
 
+import java.util.List;
+
 /**
  * desc:
  * author: xuebin3765@163.com
@@ -19,6 +21,8 @@ public interface MenuService {
     Menu findByTitleOrUrl(String title, String url);
 
     Menu findById(int id);
+
+    List<Menu> findAllMenu(Integer parentId);
 //
 //    /**
 //     * 获取当前菜单的所有子菜单

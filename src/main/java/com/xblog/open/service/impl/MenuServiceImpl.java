@@ -1,6 +1,7 @@
 package com.xblog.open.service.impl;
 
 import com.xblog.open.common.base.BaseLogs;
+import com.xblog.open.common.utils.MenuTree;
 import com.xblog.open.entity.sys.Menu;
 import com.xblog.open.repository.sys.MenuRepository;
 import com.xblog.open.service.MenuService;
@@ -42,7 +43,7 @@ public class MenuServiceImpl extends BaseLogs implements MenuService {
      */
     @Override
     public Menu findByTitleOrUrl(String title, String url) {
-        List<Menu> menuList = menuRepository.findAllByTitleOrUrlOrderByCreateTimeAsc(title, url);
+        List<Menu> menuList = menuRepository.findAllByTitleOrUrlPathOrderByCreateTimeAsc(title, url);
         if (null != menuList && menuList.size() > 0){
             return menuList.get(0);
         }
@@ -52,5 +53,22 @@ public class MenuServiceImpl extends BaseLogs implements MenuService {
     @Override
     public Menu findById(int id) {
         return menuRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Menu> findAllMenu(Integer parentId) {
+        List<Menu> menuList = null;
+        if (-1 == parentId){
+            // 查询所有
+            menuList = menuRepository.findAll();
+        }else {
+            menuList = menuRepository.findAllByParentId(parentId);
+        }
+        if (menuList != null && menuList.size() > 0){
+            // 构造菜单树
+            MenuTree menuTree = new MenuTree(menuList);
+            return menuTree.buildTree();
+        }
+        return null;
     }
 }
