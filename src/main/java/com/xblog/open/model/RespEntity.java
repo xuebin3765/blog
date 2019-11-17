@@ -30,64 +30,64 @@ public class RespEntity {
     private final static String DATA = "data";
     private final static String MESSAGE = "message";
 
-    public static String success(){
-        return new RespEntity.RespEntityBuilder()
-                .respCode(RespCode.success)
-                .respMsg(getFileMsg(RespCode.success))
-                .build()
-                .toString();
-    }
-
-    public static String success(Object object){
-        return new RespEntity.RespEntityBuilder()
-                .respCode(RespCode.success)
-                .respMsg(getFileMsg(RespCode.success))
-                .data(JSON.toJSONString(object))
-                .build()
-                .toString();
-    }
-
-    public static String success(Object object, String respMsg){
-        return new RespEntity.RespEntityBuilder()
-                .respCode(RespCode.success)
-                .respMsg(respMsg)
-                .data(JSON.toJSONString(object))
-                .build()
-                .toString();
-    }
-
-    public static String success(String respMsg){
-        return new RespEntity.RespEntityBuilder()
-                .respCode(RespCode.success)
-                .respMsg(respMsg)
-                .build()
-                .toString();
-    }
-
-    public static String error(String respCode, String respMsg){
-
-        return new RespEntity.RespEntityBuilder()
-                .respCode(respCode)
-                .respMsg(respMsg)
-                .build()
-                .toString();
-    }
-
-    public static String error(String respMsg){
-        return new RespEntity.RespEntityBuilder()
-                .respMsg(respMsg)
-                .respCode(RespCode.error)
-                .build()
-                .toString();
-    }
-
-    public static String error(){
-        return new RespEntity.RespEntityBuilder()
-                .respMsg(getFileMsg(RespCode.error))
-                .respCode(RespCode.error)
-                .build()
-                .toString();
-    }
+//    public static String success(){
+//        return new RespEntity.RespEntityBuilder()
+//                .respCode(RespCode.success)
+//                .respMsg(getFileMsg(RespCode.success))
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String success(Object object){
+//        return new RespEntity.RespEntityBuilder()
+//                .respCode(RespCode.success)
+//                .respMsg(getFileMsg(RespCode.success))
+//                .data(JSON.toJSONString(object))
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String success(Object object, String respMsg){
+//        return new RespEntity.RespEntityBuilder()
+//                .respCode(RespCode.success)
+//                .respMsg(respMsg)
+//                .data(JSON.toJSONString(object))
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String success(String respMsg){
+//        return new RespEntity.RespEntityBuilder()
+//                .respCode(RespCode.success)
+//                .respMsg(respMsg)
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String error(String respCode, String respMsg){
+//
+//        return new RespEntity.RespEntityBuilder()
+//                .respCode(respCode)
+//                .respMsg(respMsg)
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String error(String respMsg){
+//        return new RespEntity.RespEntityBuilder()
+//                .respMsg(respMsg)
+//                .respCode(RespCode.error)
+//                .build()
+//                .toString();
+//    }
+//
+//    public static String error(){
+//        return new RespEntity.RespEntityBuilder()
+//                .respMsg(getFileMsg(RespCode.error))
+//                .respCode(RespCode.error)
+//                .build()
+//                .toString();
+//    }
 
     /**
      * 获取返回码上边的注解描述信息
@@ -118,7 +118,7 @@ public class RespEntity {
         Map<String, Object> map = Maps.newHashMap();
         map.put(CODE, this.respCode);
         map.put(DATA, this.data);
-        map.put(MESSAGE, this.respMsg);
+        map.put(MESSAGE, getFileMsg(this.respCode));
         return map;
     }
 }

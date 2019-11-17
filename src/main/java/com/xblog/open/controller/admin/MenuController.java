@@ -7,10 +7,11 @@ import com.xblog.open.common.response.MenuRespCode;
 import com.xblog.open.common.response.RespCode;
 import com.xblog.open.common.utils.JsonUtil;
 import com.xblog.open.entity.sys.Menu;
+import com.xblog.open.model.RespEntity;
 import com.xblog.open.service.MenuService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,7 +29,7 @@ public class MenuController extends BaseController {
      * @return view
      */
     @PostMapping("/add")
-    public ModelAndView add(@RequestBody Menu menu){
+    public String add(Model model, @RequestBody Menu menu){
 
         debug("step into add(), menu: {}", JsonUtil.toStringNoRelation(menu));
 
@@ -42,19 +43,22 @@ public class MenuController extends BaseController {
 
             if (null != oldMenu){
                 debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrlPath());
-                return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
+                setDataToModelView(model, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, null);
+                return errorView;
             }
 
             menu = menuService.add(menu);
 
             if (null != menu){
                 debug(" return success, view: {}", successView);
-                return successView(successView, menu);
+                setDataToModelView(model, menu);
+                return successView;
             }
             respCode = MenuRespCode.MENU_ADD_ERROR;
         }
+        setDataToModelView(model, respCode, validResult.getMapErrors());
         debug(" return error, view: {}", errorView);
-        return errorView(successView, respCode, validResult.getErrorMsgs());
+        return successView;
     }
 
     /**
@@ -63,11 +67,12 @@ public class MenuController extends BaseController {
      * @return update
      */
     @PostMapping("/update")
-    public ModelAndView update(@RequestBody Menu menu){
+    public String update(Model model, @RequestBody Menu menu){
 
         debug("step into update(), menu: {}", JsonUtil.toStringNoRelation(menu));
 
         String successView = "/admin/menu/list", errorView = "/admin/menu/updateMenu";
+        String view;
         String respCode = RespCode.error;
 
         if (menu != null){
@@ -78,7 +83,8 @@ public class MenuController extends BaseController {
                     Menu oldMenuByTitleOrUrl = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrlPath());
                     if (null != oldMenuByTitleOrUrl){
                         debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrlPath());
-                        return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
+                        setDataToModelView(model, errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
+                        return errorView;
                     }
                     // 设置标题
                     if (StringUtils.isNotBlank(menu.getTitle())){
@@ -104,12 +110,16 @@ public class MenuController extends BaseController {
                 }
                 menu = menuService.add(menu);
                 debug(" return success, view: {}", successView);
-                return successView(successView, menu);
+                setDataToModelView(model, menu);
+                view = successView;
+                return view;
             }
             respCode = MenuRespCode.MENU_NOT_EXIST;
         }
+        view = errorView;
         debug(" return error, view: {}", errorView);
-        return errorView(successView, respCode);
+        setDataToModelView(model, respCode);
+        return view;
     }
 
     /**
@@ -118,63 +128,53 @@ public class MenuController extends BaseController {
      * @return menuList
      */
     @GetMapping("/findAllMenu")
-    public ModelAndView findAllMenu(
+    public String findAllMenu(
+            Model model,
             @RequestParam(required = false, defaultValue = "-1") Integer parentId
     ){
-
         debug("step into update(), menu: {}", JsonUtil.toStringNoRelation(parentId));
-
         String successView = "/admin/index";
-        String respCode = RespCode.error;
-
+        String respCode = MenuRespCode.error;
+        List<Menu> menuList = null;
         if (parentId < -1){
-            return errorView(successView, MenuRespCode.MENU_PARENT_ID_ERROR);
+            respCode = MenuRespCode.MENU_PARENT_ID_ERROR;
+            debug("parent id Illegal");
+        }else {
+            debug("get all menu ");
+            menuList = menuService.findAllMenu(parentId);
+            respCode = MenuRespCode.success;
         }
+        setDataToModelView(model, respCode, menuList);
+        debug("step out findAllMenu");
+        return successView;
+    }
 
-        List<Menu> menuList = menuService.findAllMenu(parentId);
-
-        return successView(successView, menuList);
-
-//        if (menu != null){
-//            Menu oldMenu = menuService.findById(menu.getId());
-//            if (oldMenu != null){
-//                if (StringUtils.isNotBlank(menu.getTitle()) || StringUtils.isNotBlank(menu.getUrl())){
-//                    // 要修改标题和url
-//                    Menu oldMenuByTitleOrUrl = menuService.findByTitleOrUrl(menu.getTitle(), menu.getUrl());
-//                    if (null != oldMenuByTitleOrUrl){
-//                        debug("menu exist, title: {}, url: {}", oldMenu.getTitle(), menu.getUrl());
-//                        return errorView(errorView, MenuRespCode.MENU_TITLE_OR_URL_REPEAT, oldMenu);
-//                    }
-//                    // 设置标题
-//                    if (StringUtils.isNotBlank(menu.getTitle())){
-//                        oldMenu.setTitle(menu.getTitle());
-//                    }
-//                    // 设置url
-//                    if (StringUtils.isNotBlank(menu.getUrl())){
-//                        oldMenu.setUrl(menu.getUrl());
-//                    }
-//                }
-//
-//                // 设置父目录
-//                if (null != menu.getParentId()){
-//                    oldMenu.setParentId(menu.getParentId());
-//                }
-//                // 设置权限
-//                if (null != menu.getRole()){
-//                    oldMenu.setRole(menu.getRole());
-//                }
-//                // 设置描述信息
-//                if (StringUtils.isNotBlank(menu.getDesc())){
-//                    oldMenu.setDesc(menu.getDesc());
-//                }
-//                menu = menuService.add(menu);
-//                debug(" return success, view: {}", successView);
-//                return successView(successView, menu);
-//            }
-//            respCode = MenuRespCode.MENU_NOT_EXIST;
-//        }
-//        debug(" return error, view: {}", errorView);
-//        return errorView(successView, respCode);
+    /**
+     * 查询菜单
+     * @param parentId 父节点
+     * @return menuList
+     */
+    @GetMapping("/findAllMenuJson")
+    public RespEntity findAllMenuJson(
+            @RequestParam(required = false, defaultValue = "-1") Integer parentId
+    ){
+        debug("step into findAllMenuJson(), menu: {}", JsonUtil.toStringNoRelation(parentId));
+        String successView = "/admin/index";
+        RespEntity respEntity = new RespEntity();
+        String respCode;
+        List<Menu> menuList = null;
+        if (parentId < -1){
+            respCode = MenuRespCode.MENU_PARENT_ID_ERROR;
+            debug("parent id Illegal");
+        }else {
+            debug("get all menu ");
+            menuList = menuService.findAllMenu(parentId);
+            respCode = MenuRespCode.success;
+        }
+        respEntity.setRespCode(respCode);
+        respEntity.setData(menuList);
+        debug("step out findAllMenu");
+        return respEntity;
     }
 
 
